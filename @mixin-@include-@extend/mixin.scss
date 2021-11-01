@@ -1,0 +1,47 @@
+div{
+    float: left;
+}
+
+@mixin container($color, $height) {           // Bu sekilde (@mixin) ile sanki bir fonksiyon gibi bir ozellikler demeti ayarlayabiliyoruz
+    width: 100px;
+    height: $height;
+    background-color:$color;
+    margin: 10px;
+}
+
+#first{
+    @include container(blue,100px);         // Takiben bu sekilde (@include) ile o ayarladigimiz ozellikler demetini ilgili etiketin css ozelligi olarak cagirabiliyoruz
+}
+
+#second{
+    @include container(yellow, 200px);      // Bu sekilde de ilgili ozellik demetiniden gelen ozellikleri degistirebiliyoruz
+    //background-color:yellow;  
+}
+
+#third{
+    @include container(red, 300px);         // Bu sekilde de ilgili ozellik demetiniden gelen ozellikleri degistirebiliyoruzz
+    //background-color:red;
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+.box{
+    width: 100px;
+    height: 100px;
+    background-color:coral;
+    margin: 15px;
+    border-radius: 20px * 2; // 40px olur   // scss de bu sekilde operatorler (+, -, *, /, %) ile de islem yaptirabiliyoruz
+                             // Mesela burada birsey yazilmazsa pixel olarak kabul eder ve islemi yapar, (2px) yazilirsa zaten sikinti yok ama (2em) yazilirsa hata verir(40em*px isn't a valid CSS value.)
+}                            // Her iki tarafin da ayni birimde olmasi gerekir (px-px / em-em / rem/rem)
+
+#a1{
+    @extend .box;                             // Buradaki (@extend) ile kullanim css tarafinda ".box, #a1, #b2, #c3" seklinde ekler ve ayni ozellikler uygulanmis olur 
+}
+
+#b2{
+    @extend .box;
+}
+
+#c3{
+    @extend .box;
+}

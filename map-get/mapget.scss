@@ -1,0 +1,26 @@
+// Degiskenleri bu sekilde object model gibi tanimlama islemi gerceklestirebiliyoruz
+
+$renk : (
+    "acik" : lightgreen,
+    "koyu" : darkblue,
+    "gri" : gray,
+);                      // Mutlaka bu sekilde (";") ile kapatilmalidir aksi takdirde hata alinir
+
+$yazifont : (
+    "ince" : 300,
+    "orta" : 600,
+    "kalin" : 900,
+);
+
+body{
+    // Yukarida o sekilde tanimladigimiz bir degiskeni da asagidaki sekilde "map-get($map: , $key: )" ile kullanabiliriz
+    background-color: map-get($renk, "koyu"); // Yani $tema degiskeninin koyu rengini getir demektir
+}
+
+h1{
+    color: map-get($renk, "acik");
+    font-weight: map-get($yazifont, "ince" );
+}
+
+
+

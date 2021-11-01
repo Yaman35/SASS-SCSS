@@ -1,0 +1,90 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+$primaryColor: #44ffd7;                // Bu sekilde bir degisken tanimlayarak artik bunu istedgimiz yerde kullanabiliriz
+                                         // Global bir degisken olur ve her yerde kullanilabilir
+$textColor: #fff;
+$widthButton: 100px;
+
+nav{
+    // background-color: #00ffff;
+    background-color: gray;            // Gorulecegi uzere artik buradaki renk yukarida tanimladigimiz degiskenden gelmektedir
+    &::after{                            // Floatlardan dolayi meydana gelen kaymalari engelledik
+    clear: both;
+    content: "";
+    display: block;
+    }
+}
+
+.left{                                   // Bu sekilde nested yapilar kullanilabilir olmaktadir
+    list-style: none;
+    float: left;
+    li{
+    $secondaryColor: darkgreen;        // Bu sekilde etiket icerisinde de tanimlayarak kullanabiliriz 
+                                         // Fakat bu durumda tanimlanan degisken global degil locale olur ve yalnizca bu etiket icinde kullanilabilir
+                                         // ($secondaryColor: darkgreen !global;) seklinde bir kullanim ile onu da global degisken yapip her yerde kullanabiliriz
+    display: inline-block;               
+    margin: 20px;
+    background-color: $secondaryColor;   // Gorulecegi uzere burada kullanabildik
+    &:first-child{                       // Burada eger "li:first-child" seklinde kullansaydik css tarafinda ".left li li:first-child" olusturur ki bu da bug olur, istedgimiz bir durum degil zaten 
+        background-color: yellow;      // O yuzden burada (&) ile birlikte bir nevi "this" kulanimi gibi "icinde bulunulan li nin first child" demeyi yapabiliyoruz ve bu sefer css tarafinda ".left li:first-child"  seklinde cikar
+        margin: 0;
+    }
+    a{
+        text-decoration: none;
+        text-transform: uppercase;
+        color: $textColor;
+        display: inline-block;
+        padding: 10px;
+    }
+}
+
+    li:last-child{
+        background-color: red;
+    }
+}
+
+/*
+span{
+    background-color: $secondaryColor;   // Burada yukarida sonradan (!global) ile global degisken haline getirdigimiz degiskeni kullanabilirdik
+}
+*/
+
+.right{
+    float: right;
+}
+
+.cw, .linkedin{
+    padding: 10px;
+    display: inline-block;
+    width: $widthButton;
+    border: 1px solid yellow;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $textColor;
+}
+
+.cw{
+    &:link{         // ("&") ile, bu elemani kastediyoruz degisiklikleri onda yap demek istiyoruz
+       background-color:$primaryColor;
+    } 
+    &:hover{
+    background-color: darken($primaryColor, 20%); // darken methodu ile istedigimiz rengi verip % kac oraninda koyulastirmasini istedigimizi belirtebiliyoruz
+    
+    }
+}
+
+.linkedin{
+    &:link{
+       background-color:$primaryColor;
+    } 
+    &:hover{
+    background-color: lighten(red, 40%);        // lighten ile de  ayni sekilde belirtilen rengi istedigimiz oranda aciklastiriyor
+    }
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------
+
+

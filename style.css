@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background-color: gray;
+}
+
+nav::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+.left {
+  list-style: none;
+  float: left;
+}
+
+.left li {
+  display: inline-block;
+  margin: 20px;
+  background-color: darkgreen;
+}
+
+.left li:first-child {
+  background-color: yellow;
+  margin: 0;
+}
+
+.left li a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  display: inline-block;
+  padding: 10px;
+}
+
+.left li:last-child {
+  background-color: red;
+}
+
+/*
+span{
+    background-color: $secondaryColor;   // Burada yukarida sonradan (!global) ile global degisken haline getirdigimiz degiskeni kullanabilirdik
+}
+*/
+.right {
+  float: right;
+}
+
+.cw, .linkedin {
+  padding: 10px;
+  display: inline-block;
+  width: 100px;
+  border: 1px solid yellow;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.cw:link {
+  background-color: #44ffd7;
+}
+
+.cw:hover {
+  background-color: #00ddae;
+}
+
+.linkedin:link {
+  background-color: #44ffd7;
+}
+
+.linkedin:hover {
+  background-color: #ffcccc;
+}
+/*# sourceMappingURL=style.css.map */
